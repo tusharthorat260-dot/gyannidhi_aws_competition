@@ -79,7 +79,7 @@ The registration form collects the following information:
 
 ### MariaDB Database Verification
 
-![Database Verification](screenshots/database.png)
+![Database Verification](Screenshot 2026-11-27 120745.png)
 
 *Add your actual screenshots to the `screenshots/` folder.*
 
