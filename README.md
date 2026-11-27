@@ -442,8 +442,6 @@ The project provided practical experience with AWS networking, load balancing, E
 ---
 
 **Project:** AWS Application Load Balancer Web Hosting  
-**Organization:** Fortune Cloud Technologies
-
 
 **Author:** Tushar Thorat
 
