@@ -267,14 +267,11 @@ Through this project, I gained practical experience in:
 * Add AWS CloudWatch monitoring.
 * Deploy using a custom domain name.
 
-## 👨‍💻 Author
-
-**Tushar Thorat**
-
-Cloud / DevOps Engineer
 
 **Project:** Fortune Cloud – User Registration System
 
 ---
 
-⭐ If you find this project useful, feel free to star the repository!
+# Task-2
+
+
