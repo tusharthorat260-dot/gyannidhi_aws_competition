@@ -1,4 +1,4 @@
-<img width="1917" height="1078" alt="Screenshot 2026-11-27 120745" src="https://github.com/user-attachments/assets/77f88f0c-4db7-403b-9dcc-34515d49d02c" /><img width="1917" height="1078" alt="Screenshot 2026-11-27 120554" src="https://github.com/user-attachments/assets/afe9fb1f-63e0-4c0a-8483-15e136d9a00b" /># ☁️ Fortune Cloud – PHP Signup Form with MariaDB on AWS
+# ☁️ Fortune Cloud – PHP Signup Form with MariaDB on AWS
 
 A modern and responsive **User Registration System** built using HTML, CSS, PHP, and MariaDB, deployed on an AWS EC2 Linux instance using Apache Web Server.
 
@@ -71,17 +71,15 @@ The registration form collects the following information:
 
 ### Signup Form
 
-![Fortune Cloud Signup Form](![Uploading Screenshot 2026-11-27 120554.png…]
-)
+![Fortune Cloud Signup Form](screenshots/signup-form.png)
 
 ### Registration Success Page
 
-![Registration Success](<img width="1917" height="1078" alt="Screenshot 2026-11-27 120629" src="https://github.com/user-attachments/assets/fdaa8b82-e817-449d-9570-d6762f7c9395" 
-)
+![Registration Success](screenshots/success-page.png)
 
 ### MariaDB Database Verification
 
-![Database Verification](Screenshot 2026-11-27 120745.png)
+![Database Verification](screenshots/database.png)
 
 *Add your actual screenshots to the `screenshots/` folder.*
 
@@ -180,4 +178,103 @@ CREATE TABLE user (
 
 Copy your project files into Apache web root:
 
-`
+```bash
+sudo mkdir -p /var/www/html/fortune-cloud
+
+sudo cp index.html submit.php /var/www/html/fortune-cloud/
+```
+
+### Step 6: Restart Apache
+
+```bash
+sudo systemctl restart httpd
+```
+
+### Step 7: Access Website
+
+Open your browser:
+
+```text
+http://YOUR-EC2-PUBLIC-IP/fortune-cloud/
+```
+
+Your Fortune Cloud signup page should now be accessible.
+
+## 🔐 Security Implementation
+
+* Passwords are stored using PHP `password_hash()`.
+* SQL queries use prepared statements.
+* Email addresses are validated using PHP.
+* Password confirmation is checked before insertion.
+* HTML output is escaped using `htmlspecialchars()`.
+* Database credentials should be stored securely and not committed to GitHub.
+* MariaDB port 3306 should not be exposed publicly.
+
+## 🧪 Database Verification
+
+To verify registered users:
+
+```sql
+USE FCT;
+
+DESC user;
+
+SELECT id, name, email, phone, created_at
+FROM user;
+```
+
+Passwords are stored as hashes and are not displayed in the verification query.
+
+## 📤 GitHub Deployment
+
+Initialize Git:
+
+```bash
+git init
+
+git add .
+
+git commit -m "Initial Fortune Cloud signup project"
+
+git branch -M main
+
+git remote add origin YOUR-GITHUB-REPOSITORY-URL
+
+git push -u origin main
+```
+
+## 🎯 Learning Outcomes
+
+Through this project, I gained practical experience in:
+
+* Deploying applications on AWS EC2.
+* Configuring Apache Web Server.
+* Installing and configuring PHP.
+* Managing MariaDB databases.
+* Connecting PHP applications with MariaDB.
+* Implementing secure user registration.
+* Using prepared statements and password hashing.
+* Managing source code using Git and GitHub.
+
+## 🔮 Future Improvements
+
+* Implement user login and logout functionality.
+* Add email OTP verification.
+* Add password reset functionality.
+* Implement HTTPS using SSL/TLS certificates.
+* Move database to AWS RDS.
+* Configure CI/CD using GitHub Actions.
+* Add AWS CloudWatch monitoring.
+* Deploy using a custom domain name.
+
+## 👨‍💻 Author
+
+**Tushar Thorat**
+
+Cloud / DevOps Engineer
+
+**Project:** Fortune Cloud – User Registration System
+
+---
+
+⭐ If you find this project useful, feel free to star the repository!
