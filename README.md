@@ -78,9 +78,8 @@ The registration form collects the following information:
 
 ### MariaDB Database Verification
 
-![Database Verification](Screenshot 2026-11-27 120745.png)
+![Database Verification](https://github.com/tusharthorat260-dot/gyannidhi_aws_competition/blob/dbcc78a208ea57311f60bd48e52999b777ca00fb/Screenshot%202026-11-27%20120745.png)
 
-*Add your actual screenshots to the `screenshots/` folder.*
 
 ## 🗄️ Database Configuration
 
