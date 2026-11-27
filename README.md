@@ -71,7 +71,8 @@ The registration form collects the following information:
 
 ### Signup Form
 
-![Fortune Cloud Signup Form](screenshots/signup-form.png)
+![Fortune Cloud Signup Form](<img width="1917" height="1078" alt="Screenshot 2026-11-27 120629" src="https://github.com/user-attachments/assets/4c2f812e-6033-446a-b7b3-ad21db18f89f" />
+)
 
 ### Registration Success Page
 
