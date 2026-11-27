@@ -1,4 +1,4 @@
-# ☁️ Fortune Cloud – PHP Signup Form with MariaDB on AWS
+<img width="1917" height="1078" alt="Screenshot 2026-11-27 120554" src="https://github.com/user-attachments/assets/afe9fb1f-63e0-4c0a-8483-15e136d9a00b" /># ☁️ Fortune Cloud – PHP Signup Form with MariaDB on AWS
 
 A modern and responsive **User Registration System** built using HTML, CSS, PHP, and MariaDB, deployed on an AWS EC2 Linux instance using Apache Web Server.
 
@@ -71,7 +71,7 @@ The registration form collects the following information:
 
 ### Signup Form
 
-![Fortune Cloud Signup Form](<img width="1917" height="1078" alt="Screenshot 2026-11-27 120629" src="https://github.com/user-attachments/assets/4c2f812e-6033-446a-b7b3-ad21db18f89f" />
+![Fortune Cloud Signup Form](![Uploading Screenshot 2026-11-27 120554.png…]
 )
 
 ### Registration Success Page
