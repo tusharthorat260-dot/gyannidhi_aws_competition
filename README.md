@@ -274,8 +274,153 @@ Through this project, I gained practical experience in:
 
 # Task-2
 
+# AWS Three-Tier Student Registration Application
+
+
+## 1. Project Overview
+
+This project demonstrates a student registration web application hosted in an AWS environment. Users can enter student details through a registration form and view saved records on a Students List page.
+
+The supplied screenshots show:
+- A browser-based Student Registration Form.
+- A Students List page with Edit and Delete links.
+- Linux hosts named `proxy-server`, `application`, and `database-server`.
+- Nginx service restart on `proxy-server`.
+- SSH access between the named Linux hosts.
+- A successful MariaDB client connection to an Amazon RDS endpoint.
+- The `studentapp` database and the `students` table.
+
+## 2. Architecture Diagram
+
+
+
+### Architecture flow
+
+1. The user opens the Student Registration application in a browser.
+2. The environment includes a Linux host named `proxy-server`.
+3. The terminal screenshot shows Nginx being restarted on `proxy-server`.
+4. SSH commands show access from `proxy-server` to `application`, and then to `database-server`.
+5. From `database-server`, the MariaDB client connects to an Amazon RDS MariaDB endpoint.
+6. The `studentapp` database is selected and the `students` table is queried.
+
+> **Accuracy note:** The screenshots confirm the host names, Nginx command, SSH sessions, RDS MariaDB connection, database name, table name, and browser pages. They do not show the Nginx reverse-proxy configuration, application framework, exact network/subnet layout, security-group rules, or the precise application-to-database connection path. Treat this as a high-level architecture and verify those details against your AWS configuration before presenting them as exact.
+
+## 3. Components Demonstrated
+
+| Component | Purpose / evidence |
+|---|---|
+| Linux hosts | Shell prompts show `proxy-server`, `application`, and `database-server` |
+| Nginx | `sudo systemctl restart nginx` is run on `proxy-server` |
+| SSH | Used to access the other Linux hosts |
+| Amazon RDS for MariaDB | MariaDB client connects using an RDS endpoint |
+| MariaDB client | Used to select the database and query student records |
+| Web application | Registration form and Students List pages shown in browser |
+
+## 4. Database Details
+
+The terminal shows these SQL commands:
+
+```sql
+USE studentapp;
+SELECT * FROM users;
+SELECT * FROM students;
+```
+
+The `users` query returns an error because that table does not exist in `studentapp`. The `students` query succeeds and returns one row.
+
+### `students` table columns shown
+
+| Column | Example value shown |
+|---|---|
+| `student_id` | `1` |
+| `student_name` | `tushar` |
+| `student_addr` | `pune` |
+| `student_age` | `20` |
+| `student_qual` | `mca` |
+| `student_percent` | `100` |
+| `student_year_passed` | `2026` |
+
+The MariaDB server version displayed is `11.8.9-MariaDB-log`, managed by Amazon RDS.
+
+**Security:** Never commit database passwords, private SSH keys, or credential-bearing connection strings to GitHub.
+
+## 5. Application Features
+
+### Student Registration Form
+
+The form contains:
+- Student Name
+- Student Address
+- Student Age
+- Student Qualification
+- Student Percentage
+- Year Passed
+- Register button
+
+### Students List
+
+The list page displays:
+- Student ID
+- Student Name
+- Student Address
+- Student Age
+- Student Qualification
+- Student Percentage
+- Student Year Passed
+- Edit and Delete links
+
+The screenshot shows one saved student record.
+
+## 6. Project Screenshots
+
+### 6.1 Database Connection and SQL Query
+
+Shows SSH access to the Linux hosts, connection to Amazon RDS MariaDB, selection of `studentapp`, and a successful query on `students`.
+
+<img width="1917" height="1078" alt="Screenshot 2026-11-27 132421" src="https://github.com/user-attachments/assets/65ed6c64-c3a6-45d7-a531-a965321eb93d" />
+
+### 6.2 Student Registration Form
+
+Shows the form used to enter student details.
+
+<img width="1917" height="1072" alt="Screenshot 2026-11-27 132232" src="https://github.com/user-attachments/assets/353e5835-affb-4a27-873d-06673d81f8e6" />
+
+### 6.3 Students List
+
+Shows a saved student record with Edit and Delete links.
+
+<img width="1917" height="1078" alt="Screenshot 2026-11-27 132116" src="https://github.com/user-attachments/assets/1535965c-3588-445a-93d7-0abdf8d32ae7" />
+
+## 7. Validation
+
+| Validation | Screenshot evidence |
+|---|---|
+| Nginx service command | Restart command run on `proxy-server` |
+| SSH access | Login banners shown for the named hosts |
+| RDS connectivity | MariaDB monitor welcome message |
+| Database selection | `USE studentapp;` succeeds |
+| Student data query | `SELECT * FROM students;` returns one row |
+| Registration page | Form loads in browser |
+| Students list | Record appears with Edit and Delete links |
+
+## 8. Skills Demonstrated
+
+- Linux command-line administration
+- Nginx service management
+- SSH-based server access
+- Amazon RDS MariaDB connectivity
+- SQL database selection and querying
+- Browser-based application testing
+- Understanding of a multi-server cloud application environment
+
+## 9. Conclusion
+
+This project demonstrates a student registration application in an AWS-hosted environment with multiple Linux hosts and an Amazon RDS MariaDB database. Users can enter student information through a registration form and view saved records on a Students List page. The terminal screenshot verifies database connectivity and retrieval of records from the `students` table.
+
+
 
 # Task-3
+
 
 # AWS High Availability Web Application with Application Load Balancer
 
