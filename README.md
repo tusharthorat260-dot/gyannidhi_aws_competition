@@ -197,7 +197,7 @@ sudo systemctl restart httpd
 Open your browser:
 
 ```text
-http://YOUR-EC2-PUBLIC-IP/fortune-cloud/
+http://3.83.218.178
 ```
 
 Your Fortune Cloud signup page should now be accessible.
