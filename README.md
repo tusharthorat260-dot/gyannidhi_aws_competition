@@ -76,7 +76,8 @@ The registration form collects the following information:
 
 ### Registration Success Page
 
-![Registration Success](screenshots/success-page.png)
+![Registration Success](<img width="1917" height="1078" alt="Screenshot 2026-11-27 120629" src="https://github.com/user-attachments/assets/fdaa8b82-e817-449d-9570-d6762f7c9395" 
+)
 
 ### MariaDB Database Verification
 
