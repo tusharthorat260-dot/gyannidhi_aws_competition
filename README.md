@@ -71,7 +71,7 @@ The registration form collects the following information:
 
 ### Signup Form
 
-![Fortune Cloud Signup Form](screenshots/signup-form.png)
+![Fortune Cloud Signup Form](https://github.com/tusharthorat260-dot/gyannidhi_aws_competition/blob/acca647ed21f0c819929a0c6e16447d975075baf/Screenshot%202026-11-27%20120554.png)
 
 ### Registration Success Page
 
