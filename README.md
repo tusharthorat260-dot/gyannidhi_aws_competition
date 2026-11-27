@@ -1,4 +1,6 @@
+
 # Task-1
+
 
 # ☁️ Fortune Cloud – PHP Signup Form with MariaDB on AWS
 
@@ -292,7 +294,7 @@ The supplied screenshots show:
 
 ## 2. Architecture Diagram
 
-
+<img width="1536" height="1024" alt="WhatsApp Image 2026-11-27 at 5 14 04 PM" src="https://github.com/user-attachments/assets/d69fef8c-9a26-46dc-aec8-f8bdd7f867c2" />
 
 ### Architecture flow
 
