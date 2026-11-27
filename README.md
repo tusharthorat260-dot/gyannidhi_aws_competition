@@ -275,3 +275,176 @@ Through this project, I gained practical experience in:
 # Task-2
 
 
+# Task-3
+
+# AWS High Availability Web Application with Application Load Balancer
+
+
+## Project Overview
+
+This project demonstrates how to host a web application on AWS and make it accessible through an **internet-facing Application Load Balancer (ALB)**. The ALB uses two HTTP listeners to route requests to separate target groups:
+
+- **HTTP :80** → `app-tg` → Welcome website
+- **HTTP :8080** → `test-app-tg` → CPU monitoring and load-testing dashboard
+
+The VPC console screenshot shows a VPC with four subnets across two Availability Zones, two route tables, an Internet Gateway connection, and a NAT Gateway connection. The ALB console screenshot shows the load balancer active, both listeners configured, and the registered EC2 target reported as healthy in each target group.
+
+## Project Objectives
+
+1. Build a logically segmented AWS network using a VPC and multiple subnets.
+2. Publish web applications through an internet-facing Application Load Balancer.
+3. Configure listener-to-target-group routing for two application ports.
+4. Verify target health and test the application through the ALB DNS name.
+5. Demonstrate a CPU monitoring page and generate test CPU load.
+
+## Architecture Diagram
+
+<img width="1536" height="1024" alt="WhatsApp Image 2026-11-27 at 4 19 17 PM" src="https://github.com/user-attachments/assets/9bb7a056-8c45-4075-96de-645c77c61103" />
+
+
+## AWS Services and Components
+
+| Component | Purpose |
+|---|---|
+| Amazon VPC | Isolated virtual network for project resources |
+| Public subnets | Network subnets intended for internet-facing resources |
+| Private subnets | Network subnets intended for internal resources |
+| Internet Gateway (IGW) | Provides internet connectivity for resources with suitable public routing |
+| NAT Gateway | Allows private-subnet resources to initiate outbound internet access |
+| Application Load Balancer | Receives HTTP requests and forwards them to target groups |
+| ALB Listener :80 | Routes requests to `app-tg` |
+| ALB Listener :8080 | Routes requests to `test-app-tg` |
+| EC2 | Hosts the registered application target |
+| Target Groups | Define the destinations for listener forwarding and health checks |
+
+## Request Flow
+
+### 1. Welcome Website – Port 80
+
+1. A user opens the ALB DNS name in a browser.
+2. The request reaches the ALB on HTTP port `80`.
+3. The listener forwards the request to `app-tg`.
+4. The target group sends the request to the registered EC2 target.
+5. The Fortune Cloud Technologies welcome page is returned to the browser.
+
+**Test URL:**
+
+```text
+http://<ALB-DNS-NAME>/
+```
+
+### 2. CPU Monitoring Dashboard – Port 8080
+
+1. A user opens the ALB DNS name with port `8080`.
+2. The request reaches the ALB listener on port `8080`.
+3. The listener forwards the request to `test-app-tg`.
+4. The target group sends the request to the registered EC2 target.
+5. The CPU dashboard displays CPU usage and provides controls to increase or cancel CPU load.
+
+**Test URL:**
+
+```text
+http://application-alb-724886124.us-east-1.elb.amazonaws.com:8080/
+```
+
+Replace `<application-alb-724886124.us-east-1.elb.amazonaws.com>` with the DNS name shown in the EC2 → Load Balancers console.
+
+## Implementation Summary
+
+### Network
+
+- Created a VPC named `my-vpc-1`.
+- Configured four subnets across two Availability Zones, as shown in the VPC resource map.
+- Configured two route tables.
+- Connected the network to an Internet Gateway and a NAT Gateway.
+
+### Application Load Balancer
+
+- Created an internet-facing Application Load Balancer named `application-alb`.
+- Configured HTTP listeners on ports `80` and `8080`.
+- Configured listener forwarding to two target groups:
+  - `app-tg`
+  - `test-app-tg`
+
+### Target Health
+
+The ALB resource map screenshot shows one registered EC2 target in each target group, and both targets are displayed as **Healthy**. The same EC2 instance ID is visible in both target groups.
+
+## Project Screenshots
+
+### 1. VPC Network Resource Map
+
+Shows the VPC, four subnets, two route tables, and network connections.
+
+<img width="1917" height="1078" alt="Screenshot 2026-11-27 113754" src="https://github.com/user-attachments/assets/ccad28e1-6443-4d07-b4af-c43678a40f24" />
+
+
+### 2. Application Load Balancer Configuration
+
+Shows the active ALB, HTTP listeners on ports 80 and 8080, both target groups, and healthy registered targets.
+
+<img width="1917" height="1078" alt="Screenshot 2026-11-27 113550" src="https://github.com/user-attachments/assets/a9246d80-56eb-46f4-a914-702c4462a822" />
+
+### 3. CPU Monitoring and Load Testing Dashboard
+
+Shows the CPU usage dashboard with **Increase CPU Load** and **Cancel Load** controls.
+
+<img width="1917" height="1078" alt="Screenshot 2026-11-27 113446" src="https://github.com/user-attachments/assets/e25c8372-1c92-4f32-b4de-13d39b2562a3" />
+
+### 4. Welcome Website
+
+Shows the deployed Fortune Cloud Technologies project welcome page.
+
+<img width="1917" height="1078" alt="Screenshot 2026-11-27 113343" src="https://github.com/user-attachments/assets/633b5d7d-9243-424e-a208-46965b7c20fc" />
+
+## Testing and Validation
+
+| Test | Expected / observed result |
+|---|---|
+| Open ALB DNS on port 80 | Welcome website is displayed |
+| Open ALB DNS on port 8080 | CPU monitoring dashboard is displayed |
+| Check ALB state | Active |
+| Check `app-tg` target health | Healthy in screenshot |
+| Check `test-app-tg` target health | Healthy in screenshot |
+| Use CPU load control | Dashboard provides increase/cancel controls |
+
+## Security Recommendations
+
+- Allow inbound HTTP traffic to the ALB only on the required listener ports (`80` and `8080`) for this demonstration.
+- Allow the application target's inbound traffic only from the ALB security group, using the actual application ports.
+- Do not expose SSH (`22`) to the entire internet; restrict it to a trusted IP or use AWS Systems Manager Session Manager.
+- For a production deployment, use HTTPS with an ACM certificate and an HTTPS listener.
+- Avoid storing database passwords, access keys, or other secrets in source code or this README.
+
+## Improvements for a Production-Ready Version
+
+- Deploy application instances across multiple Availability Zones.
+- Attach an Auto Scaling Group to the appropriate target group(s).
+- Add HTTPS using AWS Certificate Manager.
+- Configure CloudWatch alarms for CPU utilization, ALB errors, and unhealthy targets.
+- Use Route 53 for a custom domain.
+- Store application logs centrally and apply least-privilege IAM roles.
+
+## Challenges and Learning Outcomes
+
+- Practiced VPC networking concepts, including subnets, route tables, IGW, and NAT Gateway.
+- Learned how ALB listeners forward traffic to target groups.
+- Configured separate application access paths using ports `80` and `8080`.
+- Validated target health through the ALB console.
+- Tested a live welcome page and a CPU monitoring/load-testing dashboard through the ALB DNS name.
+
+## Conclusion
+
+This project demonstrates an AWS-hosted web application accessed through an internet-facing Application Load Balancer. Separate listeners and target groups provide two application endpoints through one load balancer, while the VPC network is organized across multiple subnets and Availability Zones.
+
+The project provided practical experience with AWS networking, load balancing, EC2 target registration, health checks, and application testing.
+
+---
+
+**Project:** AWS Application Load Balancer Web Hosting  
+**Organization:** Fortune Cloud Technologies
+
+
+**Author:** Tushar Thorat
+
+
